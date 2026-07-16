@@ -1,0 +1,54 @@
+MIT License
+
+Copyright (c) 2026 AI-Penetration-Platform Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Additional Terms for AI-Penetration-Platform
+
+### 1. Disclaimer
+This software is provided for educational and research purposes only. Users are responsible for ensuring that their use of this software complies with all applicable laws and regulations. The authors and contributors are not responsible for any illegal or unethical use of this software.
+
+### 2. Security Considerations
+- This software is designed for security testing and penetration testing purposes
+- Users should only test systems for which they have explicit authorization
+- Unauthorized access to computer systems is illegal and unethical
+- Always obtain proper authorization before conducting any security testing
+
+### 3. Data Privacy
+- Users are responsible for protecting sensitive data obtained during security testing
+- Comply with all applicable data protection laws and regulations
+- Do not store or transmit sensitive data without proper encryption and access controls
+
+### 4. Liability
+- Use this software at your own risk
+- The authors and contributors are not liable for any damages resulting from the use of this software
+- Users assume all responsibility for their use of this software
+
+### 5. Compliance
+- Users must comply with all applicable laws and regulations
+- This software should not be used for any illegal activities
+- Users are responsible for obtaining any necessary licenses or permissions
+
+### 6. Support
+- This software is provided "as-is" without warranty
+- Support is provided on a best-effort basis by the community
+- Commercial support may be available through separate arrangements

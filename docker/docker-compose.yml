@@ -1,0 +1,220 @@
+# AI-Penetration-Platform Docker Compose 配置
+# 作者: 老公 (赵志强)
+# 日期: 2026-07-16
+
+version: '3.8'
+
+services:
+  # PostgreSQL 数据库
+  postgres:
+    image: postgres:15
+    container_name: ai_penetration_postgres
+    environment:
+      POSTGRES_DB: ai_penetration_platform
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+
+  # MongoDB 数据库
+  mongodb:
+    image: mongo:7
+    container_name: ai_penetration_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+      MONGO_INITDB_DATABASE: ai_penetration_platform
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: ai_penetration_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+
+  # 后端服务
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: ai_penetration_backend
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=ai_penetration_platform
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
+      - MONGODB_DB=ai_penetration_platform
+      - MONGODB_USER=admin
+      - MONGODB_PASSWORD=admin123
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - DEBUG=True
+      - SECRET_KEY=your-secret-key-here
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app/backend
+      - ../scripts:/app/scripts
+    depends_on:
+      - postgres
+      - mongodb
+      - redis
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+    command: >
+      sh -c "python -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  # 前端服务
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: ai_penetration_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../frontend:/app/frontend
+      - /app/frontend/node_modules
+    depends_on:
+      - backend
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+    command: >
+      sh -c "npm start"
+
+  # Nginx 反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: ai_penetration_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+
+  # Celery Worker
+  celery:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: ai_penetration_celery
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=ai_penetration_platform
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
+      - MONGODB_DB=ai_penetration_platform
+      - MONGODB_USER=admin
+      - MONGODB_PASSWORD=admin123
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    volumes:
+      - ../backend:/app/backend
+    depends_on:
+      - postgres
+      - mongodb
+      - redis
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+    command: >
+      sh -c "celery -A backend.tasks.celery worker --loglevel=info"
+
+  # Celery Beat
+  celery-beat:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: ai_penetration_celery_beat
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=ai_penetration_platform
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
+      - MONGODB_DB=ai_penetration_platform
+      - MONGODB_USER=admin
+      - MONGODB_PASSWORD=admin123
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    volumes:
+      - ../backend:/app/backend
+    depends_on:
+      - postgres
+      - mongodb
+      - redis
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+    command: >
+      sh -c "celery -A backend.tasks.celery beat --loglevel=info"
+
+  # Flower (Celery 监控)
+  flower:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: ai_penetration_flower
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+    networks:
+      - ai_penetration_network
+    restart: unless-stopped
+    command: >
+      sh -c "celery -A backend.tasks.celery flower --port=5555"
+
+volumes:
+  postgres_data:
+  mongo_data:
+  redis_data:
+
+networks:
+  ai_penetration_network:
+    driver: bridge

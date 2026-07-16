@@ -1,0 +1,1633 @@
+/* App.css - 全局样式文件 */
+
+/* 重置默认样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 页面容器样式 */
+.page-container {
+  padding: 24px;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+
+/* 卡片样式增强 */
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 按钮样式增强 */
+.ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.ant-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* 表格样式增强 */
+.ant-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  background: #fafafa;
+  font-weight: 600;
+  color: #262626;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: #f5f5f5;
+}
+
+/* 统计卡片样式 */
+.statistic-card {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.statistic-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* 标签样式增强 */
+.ant-tag {
+  border-radius: 4px;
+  font-weight: 500;
+  padding: 2px 8px;
+}
+
+/* 输入框样式增强 */
+.ant-input {
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s ease;
+}
+
+.ant-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* 选择器样式增强 */
+.ant-select {
+  border-radius: 6px;
+}
+
+.ant-select-selector {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* 模态框样式增强 */
+.ant-modal {
+  border-radius: 12px;
+}
+
+.ant-modal-header {
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 12px 12px 0 0;
+}
+
+.ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+  border-radius: 0 0 12px 12px;
+}
+
+/* 页面标题样式 */
+.page-title {
+  margin-bottom: 8px;
+  color: #262626;
+}
+
+.page-subtitle {
+  color: #8c8c8c;
+  font-size: 14px;
+}
+
+/* 加载动画 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* 空状态样式 */
+.empty-state {
+  text-align: center;
+  padding: 60px 0;
+  color: #8c8c8c;
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  color: #d9d9d9;
+  margin-bottom: 16px;
+}
+
+/* 错误状态样式 */
+.error-state {
+  text-align: center;
+  padding: 60px 0;
+  color: #ff4d4f;
+}
+
+.error-state-icon {
+  font-size: 64px;
+  color: #ff4d4f;
+  margin-bottom: 16px;
+}
+
+/* 成功状态样式 */
+.success-state {
+  text-align: center;
+  padding: 60px 0;
+  color: #52c41a;
+}
+
+.success-state-icon {
+  font-size: 64px;
+  color: #52c41a;
+  margin-bottom: 16px;
+}
+
+/* 警告状态样式 */
+.warning-state {
+  text-align: center;
+  padding: 60px 0;
+  color: #faad14;
+}
+
+.warning-state-icon {
+  font-size: 64px;
+  color: #faad14;
+  margin-bottom: 16px;
+}
+
+/* 响应式样式 */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px;
+  }
+  
+  .ant-card {
+    margin-bottom: 16px;
+  }
+  
+  .ant-btn {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+/* 动画效果 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* 工具提示样式 */
+.ant-tooltip-inner {
+  background: #262626;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 徽章样式 */
+.ant-badge {
+  margin-right: 8px;
+}
+
+/* 进度条样式 */
+.ant-progress {
+  margin-bottom: 16px;
+}
+
+/* 时间线样式 */
+.timeline-item {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #f0f0f0;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -6px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #667eea;
+}
+
+/* 标签页样式 */
+.ant-tabs-nav {
+  margin-bottom: 24px;
+}
+
+.ant-tabs-tab {
+  padding: 12px 24px;
+  font-weight: 500;
+}
+
+/* 步骤条样式 */
+.ant-steps-item-title {
+  font-weight: 500;
+}
+
+/* 搜索框样式 */
+.search-box {
+  margin-bottom: 16px;
+}
+
+.search-box .ant-input-search {
+  border-radius: 6px;
+}
+
+/* 过滤器样式 */
+.filter-container {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 操作按钮组 */
+.action-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-group .ant-btn {
+  margin-bottom: 0;
+}
+
+/* 状态指示器 */
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-indicator.active {
+  background: #52c41a;
+}
+
+.status-indicator.inactive {
+  background: #ff4d4f;
+}
+
+.status-indicator.pending {
+  background: #faad14;
+}
+
+.status-indicator.running {
+  background: #1890ff;
+}
+
+/* 卡片标题样式 */
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 16px;
+}
+
+/* 卡片内容样式 */
+.card-content {
+  color: #595959;
+  line-height: 1.6;
+}
+
+/* 卡片底部样式 */
+.card-footer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式网格 */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* 响应式卡片 */
+.responsive-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.responsive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式图片 */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* 响应式文本 */
+.responsive-text {
+  font-size: 14px;
+  color: #595959;
+  line-height: 1.6;
+}
+
+/* 响应式按钮 */
+.responsive-button {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式输入框 */
+.responsive-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式选择器 */
+.responsive-select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式文本域 */
+.responsive-textarea {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式开关 */
+.responsive-switch {
+  margin-bottom: 8px;
+}
+
+/* 响应式复选框 */
+.responsive-checkbox {
+  margin-bottom: 8px;
+}
+
+/* 响应式单选框 */
+.responsive-radio {
+  margin-bottom: 8px;
+}
+
+/* 响应式日期选择器 */
+.responsive-date-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式时间选择器 */
+.responsive-time-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式数字输入框 */
+.responsive-input-number {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式滑块 */
+.responsive-slider {
+  margin-bottom: 8px;
+}
+
+/* 响应式进度条 */
+.responsive-progress {
+  margin-bottom: 8px;
+}
+
+/* 响应式标签 */
+.responsive-tag {
+  margin-bottom: 8px;
+}
+
+/* 响应式徽章 */
+.responsive-badge {
+  margin-bottom: 8px;
+}
+
+/* 响应式提示 */
+.responsive-alert {
+  margin-bottom: 8px;
+}
+
+/* 响应式消息 */
+.responsive-message {
+  margin-bottom: 8px;
+}
+
+/* 响应式通知 */
+.responsive-notification {
+  margin-bottom: 8px;
+}
+
+/* 响应式模态框 */
+.responsive-modal {
+  width: 90%;
+  max-width: 600px;
+}
+
+/* 响应式抽屉 */
+.responsive-drawer {
+  width: 80%;
+  max-width: 500px;
+}
+
+/* 响应式弹出框 */
+.responsive-popover {
+  width: 200px;
+}
+
+/* 响应式下拉菜单 */
+.responsive-dropdown {
+  min-width: 120px;
+}
+
+/* 响应式菜单 */
+.responsive-menu {
+  width: 100%;
+}
+
+/* 响应式标签页 */
+.responsive-tabs {
+  width: 100%;
+}
+
+/* 响应式步骤条 */
+.responsive-steps {
+  width: 100%;
+}
+
+/* 响应式表格 */
+.responsive-table {
+  width: 100%;
+}
+
+/* 响应式表单 */
+.responsive-form {
+  width: 100%;
+}
+
+/* 响应式栅格 */
+.responsive-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+.responsive-col {
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+/* 响应式布局 */
+.responsive-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.responsive-layout-header {
+  background: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.responsive-layout-content {
+  flex: 1;
+  padding: 16px;
+  background: #f0f2f5;
+}
+
+.responsive-layout-footer {
+  background: #fff;
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式导航 */
+.responsive-nav {
+  background: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 响应式侧边栏 */
+.responsive-sidebar {
+  background: #fff;
+  padding: 16px;
+  border-right: 1px solid #f0f0f0;
+}
+
+/* 响应式主内容区 */
+.responsive-main {
+  flex: 1;
+  padding: 16px;
+  background: #f0f2f5;
+}
+
+/* 响应式页脚 */
+.responsive-footer {
+  background: #fff;
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式容器 */
+.responsive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 响应式行 */
+.responsive-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+/* 响应式列 */
+.responsive-col {
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+/* 响应式网格 */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* 响应式卡片 */
+.responsive-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.responsive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式按钮 */
+.responsive-button {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式输入框 */
+.responsive-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式选择器 */
+.responsive-select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式文本域 */
+.responsive-textarea {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式开关 */
+.responsive-switch {
+  margin-bottom: 8px;
+}
+
+/* 响应式复选框 */
+.responsive-checkbox {
+  margin-bottom: 8px;
+}
+
+/* 响应式单选框 */
+.responsive-radio {
+  margin-bottom: 8px;
+}
+
+/* 响应式日期选择器 */
+.responsive-date-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式时间选择器 */
+.responsive-time-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式数字输入框 */
+.responsive-input-number {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式滑块 */
+.responsive-slider {
+  margin-bottom: 8px;
+}
+
+/* 响应式进度条 */
+.responsive-progress {
+  margin-bottom: 8px;
+}
+
+/* 响应式标签 */
+.responsive-tag {
+  margin-bottom: 8px;
+}
+
+/* 响应式徽章 */
+.responsive-badge {
+  margin-bottom: 8px;
+}
+
+/* 响应式提示 */
+.responsive-alert {
+  margin-bottom: 8px;
+}
+
+/* 响应式消息 */
+.responsive-message {
+  margin-bottom: 8px;
+}
+
+/* 响应式通知 */
+.responsive-notification {
+  margin-bottom: 8px;
+}
+
+/* 响应式模态框 */
+.responsive-modal {
+  width: 90%;
+  max-width: 600px;
+}
+
+/* 响应式抽屉 */
+.responsive-drawer {
+  width: 80%;
+  max-width: 500px;
+}
+
+/* 响应式弹出框 */
+.responsive-popover {
+  width: 200px;
+}
+
+/* 响应式下拉菜单 */
+.responsive-dropdown {
+  min-width: 120px;
+}
+
+/* 响应式菜单 */
+.responsive-menu {
+  width: 100%;
+}
+
+/* 响应式标签页 */
+.responsive-tabs {
+  width: 100%;
+}
+
+/* 响应式步骤条 */
+.responsive-steps {
+  width: 100%;
+}
+
+/* 响应式表格 */
+.responsive-table {
+  width: 100%;
+}
+
+/* 响应式表单 */
+.responsive-form {
+  width: 100%;
+}
+
+/* 响应式导航 */
+.responsive-nav {
+  background: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 响应式侧边栏 */
+.responsive-sidebar {
+  background: #fff;
+  padding: 16px;
+  border-right: 1px solid #f0f0f0;
+}
+
+/* 响应式主内容区 */
+.responsive-main {
+  flex: 1;
+  padding: 16px;
+  background: #f0f2f5;
+}
+
+/* 响应式页脚 */
+.responsive-footer {
+  background: #fff;
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式容器 */
+.responsive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 响应式行 */
+.responsive-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+/* 响应式列 */
+.responsive-col {
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+/* 响应式网格 */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* 响应式卡片 */
+.responsive-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.responsive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式按钮 */
+.responsive-button {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式输入框 */
+.responsive-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式选择器 */
+.responsive-select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式文本域 */
+.responsive-textarea {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式开关 */
+.responsive-switch {
+  margin-bottom: 8px;
+}
+
+/* 响应式复选框 */
+.responsive-checkbox {
+  margin-bottom: 8px;
+}
+
+/* 响应式单选框 */
+.responsive-radio {
+  margin-bottom: 8px;
+}
+
+/* 响应式日期选择器 */
+.responsive-date-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式时间选择器 */
+.responsive-time-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式数字输入框 */
+.responsive-input-number {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式滑块 */
+.responsive-slider {
+  margin-bottom: 8px;
+}
+
+/* 响应式进度条 */
+.responsive-progress {
+  margin-bottom: 8px;
+}
+
+/* 响应式标签 */
+.responsive-tag {
+  margin-bottom: 8px;
+}
+
+/* 响应式徽章 */
+.responsive-badge {
+  margin-bottom: 8px;
+}
+
+/* 响应式提示 */
+.responsive-alert {
+  margin-bottom: 8px;
+}
+
+/* 响应式消息 */
+.responsive-message {
+  margin-bottom: 8px;
+}
+
+/* 响应式通知 */
+.responsive-notification {
+  margin-bottom: 8px;
+}
+
+/* 响应式模态框 */
+.responsive-modal {
+  width: 90%;
+  max-width: 600px;
+}
+
+/* 响应式抽屉 */
+.responsive-drawer {
+  width: 80%;
+  max-width: 500px;
+}
+
+/* 响应式弹出框 */
+.responsive-popover {
+  width: 200px;
+}
+
+/* 响应式下拉菜单 */
+.responsive-dropdown {
+  min-width: 120px;
+}
+
+/* 响应式菜单 */
+.responsive-menu {
+  width: 100%;
+}
+
+/* 响应式标签页 */
+.responsive-tabs {
+  width: 100%;
+}
+
+/* 响应式步骤条 */
+.responsive-steps {
+  width: 100%;
+}
+
+/* 响应式表格 */
+.responsive-table {
+  width: 100%;
+}
+
+/* 响应式表单 */
+.responsive-form {
+  width: 100%;
+}
+
+/* 响应式导航 */
+.responsive-nav {
+  background: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 响应式侧边栏 */
+.responsive-sidebar {
+  background: #fff;
+  padding: 16px;
+  border-right: 1px solid #f0f0f0;
+}
+
+/* 响应式主内容区 */
+.responsive-main {
+  flex: 1;
+  padding: 16px;
+  background: #f0f2f5;
+}
+
+/* 响应式页脚 */
+.responsive-footer {
+  background: #fff;
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式容器 */
+.responsive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 响应式行 */
+.responsive-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+/* 响应式列 */
+.responsive-col {
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+/* 响应式网格 */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* 响应式卡片 */
+.responsive-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.responsive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式按钮 */
+.responsive-button {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式输入框 */
+.responsive-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式选择器 */
+.responsive-select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式文本域 */
+.responsive-textarea {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式开关 */
+.responsive-switch {
+  margin-bottom: 8px;
+}
+
+/* 响应式复选框 */
+.responsive-checkbox {
+  margin-bottom: 8px;
+}
+
+/* 响应式单选框 */
+.responsive-radio {
+  margin-bottom: 8px;
+}
+
+/* 响应式日期选择器 */
+.responsive-date-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式时间选择器 */
+.responsive-time-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式数字输入框 */
+.responsive-input-number {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式滑块 */
+.responsive-slider {
+  margin-bottom: 8px;
+}
+
+/* 响应式进度条 */
+.responsive-progress {
+  margin-bottom: 8px;
+}
+
+/* 响应式标签 */
+.responsive-tag {
+  margin-bottom: 8px;
+}
+
+/* 响应式徽章 */
+.responsive-badge {
+  margin-bottom: 8px;
+}
+
+/* 响应式提示 */
+.responsive-alert {
+  margin-bottom: 8px;
+}
+
+/* 响应式消息 */
+.responsive-message {
+  margin-bottom: 8px;
+}
+
+/* 响应式通知 */
+.responsive-notification {
+  margin-bottom: 8px;
+}
+
+/* 响应式模态框 */
+.responsive-modal {
+  width: 90%;
+  max-width: 600px;
+}
+
+/* 响应式抽屉 */
+.responsive-drawer {
+  width: 80%;
+  max-width: 500px;
+}
+
+/* 响应式弹出框 */
+.responsive-popover {
+  width: 200px;
+}
+
+/* 响应式下拉菜单 */
+.responsive-dropdown {
+  min-width: 120px;
+}
+
+/* 响应式菜单 */
+.responsive-menu {
+  width: 100%;
+}
+
+/* 响应式标签页 */
+.responsive-tabs {
+  width: 100%;
+}
+
+/* 响应式步骤条 */
+.responsive-steps {
+  width: 100%;
+}
+
+/* 响应式表格 */
+.responsive-table {
+  width: 100%;
+}
+
+/* 响应式表单 */
+.responsive-form {
+  width: 100%;
+}
+
+/* 响应式导航 */
+.responsive-nav {
+  background: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 响应式侧边栏 */
+.responsive-sidebar {
+  background: #fff;
+  padding: 16px;
+  border-right: 1px solid #f0f0f0;
+}
+
+/* 响应式主内容区 */
+.responsive-main {
+  flex: 1;
+  padding: 16px;
+  background: #f0f2f5;
+}
+
+/* 响应式页脚 */
+.responsive-footer {
+  background: #fff;
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式容器 */
+.responsive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 响应式行 */
+.responsive-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+/* 响应式列 */
+.responsive-col {
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+/* 响应式网格 */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* 响应式卡片 */
+.responsive-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.responsive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式按钮 */
+.responsive-button {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式输入框 */
+.responsive-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式选择器 */
+.responsive-select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式文本域 */
+.responsive-textarea {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式开关 */
+.responsive-switch {
+  margin-bottom: 8px;
+}
+
+/* 响应式复选框 */
+.responsive-checkbox {
+  margin-bottom: 8px;
+}
+
+/* 响应式单选框 */
+.responsive-radio {
+  margin-bottom: 8px;
+}
+
+/* 响应式日期选择器 */
+.responsive-date-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式时间选择器 */
+.responsive-time-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式数字输入框 */
+.responsive-input-number {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式滑块 */
+.responsive-slider {
+  margin-bottom: 8px;
+}
+
+/* 响应式进度条 */
+.responsive-progress {
+  margin-bottom: 8px;
+}
+
+/* 响应式标签 */
+.responsive-tag {
+  margin-bottom: 8px;
+}
+
+/* 响应式徽章 */
+.responsive-badge {
+  margin-bottom: 8px;
+}
+
+/* 响应式提示 */
+.responsive-alert {
+  margin-bottom: 8px;
+}
+
+/* 响应式消息 */
+.responsive-message {
+  margin-bottom: 8px;
+}
+
+/* 响应式通知 */
+.responsive-notification {
+  margin-bottom: 8px;
+}
+
+/* 响应式模态框 */
+.responsive-modal {
+  width: 90%;
+  max-width: 600px;
+}
+
+/* 响应式抽屉 */
+.responsive-drawer {
+  width: 80%;
+  max-width: 500px;
+}
+
+/* 响应式弹出框 */
+.responsive-popover {
+  width: 200px;
+}
+
+/* 响应式下拉菜单 */
+.responsive-dropdown {
+  min-width: 120px;
+}
+
+/* 响应式菜单 */
+.responsive-menu {
+  width: 100%;
+}
+
+/* 响应式标签页 */
+.responsive-tabs {
+  width: 100%;
+}
+
+/* 响应式步骤条 */
+.responsive-steps {
+  width: 100%;
+}
+
+/* 响应式表格 */
+.responsive-table {
+  width: 100%;
+}
+
+/* 响应式表单 */
+.responsive-form {
+  width: 100%;
+}
+
+/* 响应式导航 */
+.responsive-nav {
+  background: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 响应式侧边栏 */
+.responsive-sidebar {
+  background: #fff;
+  padding: 16px;
+  border-right: 1px solid #f0f0f0;
+}
+
+/* 响应式主内容区 */
+.responsive-main {
+  flex: 1;
+  padding: 16px;
+  background: #f0f2f5;
+}
+
+/* 响应式页脚 */
+.responsive-footer {
+  background: #fff;
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式容器 */
+.responsive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 响应式行 */
+.responsive-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+/* 响应式列 */
+.responsive-col {
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+/* 响应式网格 */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* 响应式卡片 */
+.responsive-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.responsive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式按钮 */
+.responsive-button {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式输入框 */
+.responsive-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式选择器 */
+.responsive-select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式文本域 */
+.responsive-textarea {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式开关 */
+.responsive-switch {
+  margin-bottom: 8px;
+}
+
+/* 响应式复选框 */
+.responsive-checkbox {
+  margin-bottom: 8px;
+}
+
+/* 响应式单选框 */
+.responsive-radio {
+  margin-bottom: 8px;
+}
+
+/* 响应式日期选择器 */
+.responsive-date-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式时间选择器 */
+.responsive-time-picker {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式数字输入框 */
+.responsive-input-number {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* 响应式滑块 */
+.responsive-slider {
+  margin-bottom: 8px;
+}
+
+/* 响应式进度条 */
+.responsive-progress {
+  margin-bottom: 8px;
+}
+
+/* 响应式标签 */
+.responsive-tag {
+  margin-bottom: 8px;
+}
+
+/* 响应式徽章 */
+.responsive-badge {
+  margin-bottom: 8px;
+}
+
+/* 响应式提示 */
+.responsive-alert {
+  margin-bottom: 8px;
+}
+
+/* 响应式消息 */
+.responsive-message {
+  margin-bottom: 8px;
+}
+
+/* 响应式通知 */
+.responsive-notification {
+  margin-bottom: 8px;
+}
+
+/* 响应式模态框 */
+.responsive-modal {
+  width: 90%;
+ 
